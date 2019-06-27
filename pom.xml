@@ -1,17 +1,8 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchemainstance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4
-.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                      http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    rm -rf java_apps.iml .idea/
-    close IDE window and delete java_apps project
-    Import Project > Maven > check Import Maven Projects
-    automatically > next > jdk 1.8 > Finish
-    Run ca.jrvs.apps.grep.JavaGrepImp to verify project
-    imported ok
-    mvn clean package
-    Run tree ~/.m2/repository/
-    6.1. Maven Essentials
     <groupId>ca.jrvs.apps</groupId>
     <artifactId>java_apps</artifactId>
     <version>1.0-SNAPSHOT</version>
@@ -26,5 +17,11 @@
             <version>4.12</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>42.2.5</version>
+        </dependency>
     </dependencies>
+
 </project>
