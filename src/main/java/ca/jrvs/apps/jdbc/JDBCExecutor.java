@@ -7,16 +7,19 @@ import java.sql.Statement;
 
 public class JDBCExecutor {
 
-    public static void main(String... args) {
-        DatabaseConnectionManager dcm = new DatabaseConnectionManager("localhost", "hplussport", "postgres", "password");
-        try {
+    public static void main(String... args){
+        DatabaseConnectionManager dcm = new DatabaseConnectionManager("localhost",
+                "hplussport", "postgres", "password");
+        try{
             Connection connection = dcm.getConnection();
-            Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery("SELECT COUNT(*) FROM CUSTOMER");
-            while (resultSet.next()) {
-                System.out.println(resultSet.getInt(1));
+            CustomerDAO customerDAO = new CustomerDAO(connection);
+            customerDAO.findAllSorted(20).forEach(System.out::println);
+            System.out.println("Paged");
+            for(int i=1;i<3;i++){
+                System.out.println("Page number: " + i);
+                customerDAO.findAllPaged(10, i).forEach(System.out::println);
             }
-        } catch (SQLException e) {
+        }catch(SQLException e){
             e.printStackTrace();
         }
     }
