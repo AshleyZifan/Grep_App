@@ -36,6 +36,7 @@ public class JsonParser {
      */
     public static <T> T toObjectFromJson(String json, Class clazz) throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
         return (T)objectMapper.readValue(json, clazz);
     }
 }

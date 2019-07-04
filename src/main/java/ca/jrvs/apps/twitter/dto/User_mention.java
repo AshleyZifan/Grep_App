@@ -1,7 +1,9 @@
 package ca.jrvs.apps.twitter.dto;
 
-import java.util.List;
+import com.fasterxml.jackson.annotation.JsonInclude;
 
+import java.util.List;
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class User_mention{
     private long id;
     private String id_str;

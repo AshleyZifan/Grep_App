@@ -1,5 +1,8 @@
 package ca.jrvs.apps.twitter.dto;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class coordinates{
     private Double longtitude;
     private Double latitude;

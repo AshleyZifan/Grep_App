@@ -24,8 +24,22 @@ public class ApacheHttpHelper implements HttpHelper {
 
     @Override
     public HttpResponse httpPost(URI uri) {
-        HttpClient httpClient = new DefaultHttpClient();
+        //setup oauth
+        OAuthConsumer consumer = new CommonsHttpOAuthConsumer(CONSUMER_KEY, CONSUMER_SECRET);
+        consumer.setTokenWithSecret(ACCESS_TOKEN, TOKEN_SECRET);
+        // create an HTTP GET request
         HttpPost request = new HttpPost(uri);
+        // sign the request (add headers)
+        try {
+            consumer.sign(request);
+        } catch (OAuthMessageSignerException e) {
+            e.printStackTrace();
+        } catch (OAuthExpectationFailedException e) {
+            e.printStackTrace();
+        } catch (OAuthCommunicationException e) {
+            e.printStackTrace();
+        }
+        HttpClient httpClient = new DefaultHttpClient();
         HttpResponse response = null;
         try {
             response = httpClient.execute(request);
@@ -37,8 +51,22 @@ public class ApacheHttpHelper implements HttpHelper {
 
     @Override
     public HttpResponse httpPost(URI uri, StringEntity stringEntity) {
-        HttpClient httpClient = new DefaultHttpClient();
+        //setup oauth
+        OAuthConsumer consumer = new CommonsHttpOAuthConsumer(CONSUMER_KEY, CONSUMER_SECRET);
+        consumer.setTokenWithSecret(ACCESS_TOKEN, TOKEN_SECRET);
+        // create an HTTP GET request
         HttpPost request = new HttpPost(uri);
+        // sign the request (add headers)
+        try {
+            consumer.sign(request);
+        } catch (OAuthMessageSignerException e) {
+            e.printStackTrace();
+        } catch (OAuthExpectationFailedException e) {
+            e.printStackTrace();
+        } catch (OAuthCommunicationException e) {
+            e.printStackTrace();
+        }
+        HttpClient httpClient = new DefaultHttpClient();
         request.setEntity(stringEntity);
         HttpResponse response = null;
         try {
