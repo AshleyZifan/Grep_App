@@ -9,7 +9,7 @@ public class Tweet {
     private String id_str;
     private String text;
     private Entities entities;
-    private coordinates coordinates;
+    private Coordinates coordinates;
     private int retweet_count;
     private int favorite_count;
     private boolean favorited;
@@ -55,11 +55,11 @@ public class Tweet {
         this.entities = entities;
     }
 
-    public coordinates getCoordinates() {
+    public Coordinates getCoordinates() {
         return coordinates;
     }
 
-    public void setCoordinates(coordinates coordinates) {
+    public void setCoordinates(Coordinates coordinates) {
         this.coordinates = coordinates;
     }
 

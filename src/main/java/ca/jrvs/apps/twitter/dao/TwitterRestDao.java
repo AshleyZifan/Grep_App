@@ -14,12 +14,20 @@ import static ca.jrvs.apps.twitter.example.JsonParser.toObjectFromJson;
 
 public class TwitterRestDao implements CrdRepository<Tweet, String>{
 
+    private HttpHelper helper;
+
+    public TwitterRestDao(HttpHelper helper){
+        this.helper = helper;
+    }
+
     @Override
     public Tweet save(Tweet entity) {
         //Construct URI
         String text = entity.getText();
+        Double lat = entity.getCoordinates().getLatitude();
+        Double longi = entity.getCoordinates().getLongtitude();
         String new_text = text.replaceAll("\\s+","+");
-        String url = "https://api.twitter.com/1.1/statuses/update.json?status=" + new_text;
+        String url = "https://api.twitter.com/1.1/statuses/update.json?status=" + new_text + "&lat=" + lat + "&long=" + longi;
         URI uri = null;
         try {
             uri = new URI(url);
@@ -27,7 +35,6 @@ public class TwitterRestDao implements CrdRepository<Tweet, String>{
             e.printStackTrace();
         }
         //Execute HTTP Request
-        HttpHelper helper = new ApacheHttpHelper();
         HttpResponse response = helper.httpPost(uri);
         //Validate response and deser response to Tweet object
         Tweet tweet = null;
@@ -52,7 +59,6 @@ public class TwitterRestDao implements CrdRepository<Tweet, String>{
             e.printStackTrace();
         }
         //Execute HTTP Request
-        HttpHelper helper = new ApacheHttpHelper();
         HttpResponse response = helper.httpGet(uri);
         //Validate response and deser response to Tweet object
         Tweet tweet = null;
@@ -76,7 +82,6 @@ public class TwitterRestDao implements CrdRepository<Tweet, String>{
             e.printStackTrace();
         }
         //Execute HTTP Request
-        HttpHelper helper = new ApacheHttpHelper();
         HttpResponse response = helper.httpPost(uri);
         //Validate response and deser response to Tweet object
         Tweet tweet = null;

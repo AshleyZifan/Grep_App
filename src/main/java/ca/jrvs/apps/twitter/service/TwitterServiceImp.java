@@ -1,43 +1,48 @@
 package ca.jrvs.apps.twitter.service;
 
-import ca.jrvs.apps.twitter.dao.TwitterRestDao;
+import ca.jrvs.apps.twitter.dao.CrdRepository;
 import ca.jrvs.apps.twitter.dto.Tweet;
-import ca.jrvs.apps.twitter.dto.coordinates;
+import ca.jrvs.apps.twitter.dto.Coordinates;
 
 import java.lang.reflect.Field;
 
 public class TwitterServiceImp implements TwitterService {
+
+    private CrdRepository dao;
+
+    public TwitterServiceImp(CrdRepository dao){
+        this.dao =dao;
+    }
+
     @Override
     public void postTweet(String text, Double latitude, Double Longitude) {
-        TwitterRestDao dao = new TwitterRestDao();
         Tweet tweet = new Tweet();
-        coordinates coordenate = new coordinates(Longitude, latitude);
-        tweet.setCoordinates(coordenate);
+        Coordinates coordenates = new Coordinates(Longitude, latitude);
+        tweet.setCoordinates(coordenates);
         tweet.setText(text);
         dao.save(tweet);
     }
 
     @Override
     public void showTweet(String id, String[] fields) {
-        TwitterRestDao dao = new TwitterRestDao();
-        Tweet tweet = dao.findById(id);
+        Tweet tweet = (Tweet) dao.findById(id);
         Class cls = tweet.getClass();
         for(String s: fields){
             Field field = null;
             try {
-                field = cls.getDeclaredField("s");
-            } catch (NoSuchFieldException e) {
+                field = cls.getDeclaredField(s);
+                field.setAccessible(true);
+                System.out.println(field.get(tweet));
+            } catch (NoSuchFieldException | IllegalAccessException e) {
                 e.printStackTrace();
             }
-            System.out.println(field.toString());
         }
     }
 
     @Override
     public void deleteTweets(String[] ids) {
-        TwitterRestDao dao = new TwitterRestDao();
         for(String id: ids){
-           Tweet tweet = dao.deleteById(id);
+           dao.deleteById(id);
         }
     }
 }
