@@ -9,7 +9,7 @@ import static junit.framework.TestCase.assertNotNull;
 
 public class ApacheHttpHelperIntTest {
 
-    HttpHelper httpHelper = new ApacheHttpHelper();
+    private HttpHelper httpHelper = new ApacheHttpHelper();
 
     @Test
     public void httpPost() throws Exception {
