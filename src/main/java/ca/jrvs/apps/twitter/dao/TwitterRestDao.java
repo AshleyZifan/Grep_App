@@ -135,6 +135,10 @@ public class TwitterRestDao implements CrdRepository<Tweet, String>{
         Double lat = tweet.getCoordinates().getLatitude();
         Double longi = tweet.getCoordinates().getLongtitude();
 
+        if (!validatePostTweet(text, longi, lat)){
+            throw new RuntimeException("text<150, -180<longi,lat<180");
+        }
+
         StringBuilder sb = new StringBuilder();
         sb.append(API_BASE_URI)
                 .append(POST_PATH)
@@ -165,6 +169,21 @@ public class TwitterRestDao implements CrdRepository<Tweet, String>{
                 .append(".json");
 
         return new URI(sb.toString());
+    }
+
+    public static boolean validatePostTweet(String text, Double longitude, Double latitude) {
+        //make sure you validate tweet text and coordinates (e.g. tweet text less than 150 characters and  lon/lat max/min values)
+        if((text.length() > 150)) {
+            System.out.println("text length exceeds 150 chars");
+            return false;
+        } else if (( longitude > 180) || ( longitude < -180)){
+            System.out.println("usage: -180 < longitude < 180");
+            return false;
+        } else if (( latitude > 180) || ( latitude < -180)){
+            System.out.println("usage: -180 < latitude < 180");
+            return false;
+        }
+        return true;
     }
 
 

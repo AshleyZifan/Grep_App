@@ -1,44 +1,59 @@
 package ca.jrvs.apps.twitter.dao;
-
 import ca.jrvs.apps.twitter.dao.helper.ApacheHttpHelper;
 import ca.jrvs.apps.twitter.dao.helper.HttpHelper;
 import ca.jrvs.apps.twitter.dto.Coordinates;
 import ca.jrvs.apps.twitter.dto.Tweet;
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
-
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-
 import static junit.framework.TestCase.assertNotNull;
+import static org.junit.Assert.assertEquals;
 
 public class TwitterRestDaoIntTest {
 
-    HttpHelper helper = new ApacheHttpHelper();
-    TwitterRestDao dao = new TwitterRestDao(helper);
+    private Tweet expect;
+    private CrdRepository dao;
+    private String id;
 
-    @Test
-    public void save() throws Exception {
-        Tweet entity = new Tweet();
+    @Before
+    public void setup(){
+        //setup a expectedTweet
+        this.expect = new Tweet();
+        Coordinates coordinates = new Coordinates(11.11, 22.22);
+        coordinates.setType("Point");
+        this.expect.setCoordinates(coordinates);
         String now = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
-        entity.setText(now);
-        Coordinates coordinates = new Coordinates(11.11,22.22);
-        entity.setCoordinates(coordinates);
-        Tweet result = dao.save(entity);
-        assertNotNull(result);
-        System.out.println(result.getText());
+        this.expect.setText(now);
+        //setup dao
+        HttpHelper helper = new ApacheHttpHelper();
+        this.dao = new TwitterRestDao(helper);
+    }
+
+    @After
+    public void cleanup(){
+        //remove tweet
+        dao.deleteById(this.id);
     }
 
     @Test
-    public void findById() throws Exception {
-        Tweet result = dao.findById("1146879043251449858");
-        assertNotNull(result);
-        System.out.println(result.getText());
+    public void create() throws Exception {
+        //create tweet
+        Tweet postTweet = (Tweet)dao.save(this.expect);
+        //validate tweet
+        assertTweets(expect, postTweet);
+        this.id = postTweet.getId_str();
+
+        Tweet showTweet = (Tweet)dao.findById(this.id);
+        assertTweets(expect, showTweet);
     }
 
-    @Test
-    public void deleteById() throws Exception {
-        Tweet result = dao.deleteById("1146880489938137088");
-        assertNotNull(result);
-        System.out.println(result.getText());
+
+    public void assertTweets(Tweet expect, Tweet actual){
+        assertNotNull(actual);
+        assertNotNull(actual.getId_str());
+        assertEquals(actual.getText(),expect.getText());
+        assertEquals(actual.getCoordinates(), expect.getCoordinates());
     }
 }

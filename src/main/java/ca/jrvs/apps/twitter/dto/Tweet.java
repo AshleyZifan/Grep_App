@@ -2,6 +2,8 @@ package ca.jrvs.apps.twitter.dto;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 
+import java.util.Objects;
+
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Tweet {
     private String created_at;
@@ -95,5 +97,21 @@ public class Tweet {
         this.retweeted = retweeted;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Tweet tweet = (Tweet) o;
+        return id == tweet.id &&
+                retweet_count == tweet.retweet_count &&
+                favorite_count == tweet.favorite_count &&
+                favorited == tweet.favorited &&
+                retweeted == tweet.retweeted &&
+                Objects.equals(created_at, tweet.created_at) &&
+                Objects.equals(id_str, tweet.id_str) &&
+                Objects.equals(text, tweet.text) &&
+                Objects.equals(entities, tweet.entities) &&
+                Objects.equals(coordinates, tweet.coordinates);
+    }
 
 }

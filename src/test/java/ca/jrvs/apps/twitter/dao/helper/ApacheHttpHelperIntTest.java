@@ -1,12 +1,9 @@
 package ca.jrvs.apps.twitter.dao.helper;
-
 import org.apache.http.HttpResponse;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.util.EntityUtils;
 import org.junit.Test;
-
 import java.net.URI;
-
 import static junit.framework.TestCase.assertEquals;
 import static junit.framework.TestCase.assertNotNull;
 
