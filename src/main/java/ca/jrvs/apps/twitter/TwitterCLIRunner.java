@@ -18,7 +18,7 @@ public class TwitterCLIRunner {
 
     public void run(String[] args){
         if (args.length < 2){
-            throw new RuntimeException("Usage: TwitterCLI post[show]delete");
+            throw new RuntimeException("Usage: TwitterCLI post/show/delete");
         }
 
         switch (args[0].toLowerCase()){
@@ -32,7 +32,7 @@ public class TwitterCLIRunner {
                 deleteTweet(args);
                 break;
             default:
-                System.out.println("Usage:TwitterCLI post[show]delete");
+                System.out.println("Usage:TwitterCLI post/show/delete");
 
         }
     }

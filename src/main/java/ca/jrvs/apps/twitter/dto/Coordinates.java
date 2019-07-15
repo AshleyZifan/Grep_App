@@ -1,10 +1,7 @@
 package ca.jrvs.apps.twitter.dto;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 import java.util.Objects;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
