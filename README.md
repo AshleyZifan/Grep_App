@@ -65,7 +65,7 @@ tweet_ids - A comma-separated list of tweets.
 
 ## Design and Implementation
 
-##### Libraries
+#### Libraries
 
 HTTP Client with Oauth setup
 
@@ -90,7 +90,7 @@ Jackson JSON
 </dependency>
 ```
 
-##### Diagrams
+#### Diagrams
 
 | Component  | Description                                                  |
 | ---------- | :----------------------------------------------------------- |
@@ -100,6 +100,7 @@ Jackson JSON
 | Runnner    | Parse user CLI inputs and then calls the<br/>corresponding service methods |
 | Main       | Create above components and start<br/>applications           |
 
+<img src="twitter.jpg">
 
 
 # 2.Java Grep App
@@ -119,7 +120,7 @@ egrep -r {regex} {rootPath} > {outFile}
 
 ## Design and Implementation
 
-##### Pseudo code and workflow
+#### Pseudo code and workflow
 
 ```
 matchedLines = []
@@ -129,9 +130,10 @@ for file in listFiles(rootDir)
           matchedLines.add(line)
 writeToFile(matchedLines)
 ```
-##### Diagrams
+#### Diagrams
 <img src="grep.jpg">
 
+####Enhancements and Issues
 
 # 3.JDBC 
 
@@ -141,8 +143,7 @@ The JDBC application uses the Java Database Connectivity API to connect and send
 
 ## Design and Implementation
 
-##### Libraries
-
+#### Libraries
 JDBC Driver
 
 ```
@@ -153,7 +154,7 @@ JDBC Driver
 </dependency>
 ```
 
-##### Diagrams
+#### Diagrams
 <img src="jdbc2.jpg">
 
 
