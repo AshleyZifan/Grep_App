@@ -3,9 +3,35 @@
 This repository contains three small java apps: 
 
 - Twitter CLI APP (with SpringBoot)
+
+  - Introduction
+  - Usage
+  - Design and Implementation
+    - Libraries
+    - Diagrams
+  - Enhancements and Issues
+
 - Java Grep App
+
+  - Introduction
+  - Usage
+  - Design and Implementation
+    - Pseudo code and workflow
+    - Diagrams
+  - Enhancements and Issues
+
 - JDBC
 
+  - Introduction
+
+  - Usage
+
+  - Design and Implementation
+
+    - Libraries
+    - Diagrams
+
+    
 
 
 # 1.Twitter CLI App
@@ -103,6 +129,14 @@ Jackson JSON
 <img src="twitter.jpg">
 
 
+
+## Enhancements and Issues
+
+In future improvement the app should add more twitter functionality.
+
+
+
+
 # 2.Java Grep App
 
 ## Introduction
@@ -133,7 +167,13 @@ writeToFile(matchedLines)
 #### Diagrams
 <img src="grep.jpg">
 
-####Enhancements and Issues
+
+
+## Enhancements and Issues
+
+In future improvement: the result should be more readable, such as including file name and which specific word matched the pattern, and format them nicely.
+
+
 
 # 3.JDBC 
 
@@ -156,5 +196,4 @@ JDBC Driver
 
 #### Diagrams
 <img src="jdbc2.jpg">
-
 
