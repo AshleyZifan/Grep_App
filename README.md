@@ -2,9 +2,9 @@
 
 This repository contains three small java apps: 
 
-- Twitter CLI APP (with SpringBoot):
-- Java Grep App:
-- JDBC: 
+- Twitter CLI APP (with SpringBoot)
+- Java Grep App
+- JDBC
 
 
 
@@ -67,9 +67,44 @@ tweet_ids - A comma-separated list of tweets.
 
 ##### Pseudo code and workflow
 
+
+
 ##### Libraries
 
+HTTP Client with Oauth setup
+
+```
+<!--oauth 1.0 and httpclient4-->
+<dependency>
+<groupId>oauth.signpost</groupId>
+<artifactId>signpostcommonshttp4</
+artifactId>
+<version>1.2.1.2</version>
+</dependency>
+```
+
+Jackson JSON
+
+```
+<!--Jackson JSON-->
+<dependency>
+<groupId>com.fasterxml.jackson.core</groupId>
+<artifactId>jackson-databind</artifactId>
+<version>2.9.4</version>
+</dependency>
+```
+
 ##### Diagrams
+
+| Component  | Description                                                  |
+| ---------- | :----------------------------------------------------------- |
+| HttpHelper | Making HTTP requests (GET/PUT/DELETE) and<br/>handle auth    |
+| Dao        | Data Access Object which handles tweet object<br/>(Dao depends on HttpHelper) |
+| Service    | Business logic. In other words, it depends on<br/>Dao, and manipulate twitter object according<br/>to application requirements (e.g. select certain<br/>fields when showing tweet object) |
+| Runnner    | Parse user CLI inputs and then calls the<br/>corresponding service methods |
+| Main       | Create above components and start<br/>applications           |
+
+
 
 ## Enhancements and Issues
 
@@ -103,10 +138,6 @@ for file in listFiles(rootDir)
 writeToFile(matchedLines)
 ```
 
-##### Libraries
-
-
-
 ##### Diagrams
 
 
@@ -125,10 +156,15 @@ A JDBC application
 
 ##### Pseudo code and workflow
 
+
+
 ##### Libraries
+
+
 
 ##### Diagrams
 
+
+
 ## Enhancements and Issues
 
-## 
