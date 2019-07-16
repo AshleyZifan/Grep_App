@@ -129,7 +129,8 @@ for file in listFiles(rootDir)
           matchedLines.add(line)
 writeToFile(matchedLines)
 ```
-
+##### Diagrams
+<img src="grep.jpg">
 
 
 # 3.JDBC 
