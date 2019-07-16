@@ -155,6 +155,6 @@ JDBC Driver
 
 ##### Diagrams
 
-<img src="jdbc.jpg">
+<img src="jdbc_.jpg">
 
 
