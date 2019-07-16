@@ -65,10 +65,6 @@ tweet_ids - A comma-separated list of tweets.
 
 ## Design and Implementation
 
-##### Pseudo code and workflow
-
-
-
 ##### Libraries
 
 HTTP Client with Oauth setup
@@ -106,8 +102,6 @@ Jackson JSON
 
 
 
-## Enhancements and Issues
-
 
 
 # 2.Java Grep App
@@ -138,12 +132,6 @@ for file in listFiles(rootDir)
 writeToFile(matchedLines)
 ```
 
-##### Diagrams
-
-
-
-## Enhancements and Issues
-
 
 
 # 3.JDBC 
@@ -154,17 +142,14 @@ A JDBC application
 
 ## Design and Implementation
 
-##### Pseudo code and workflow
-
-
-
 ##### Libraries
 
+JDBC Driver
 
-
-##### Diagrams
-
-
-
-## Enhancements and Issues
-
+```
+<dependency>
+<groupId>org.postgresql</groupId>
+<artifactId>postgresql</artifactId>
+<version>42.2.5</version>
+</dependency>
+```
