@@ -102,8 +102,6 @@ Jackson JSON
 
 
 
-
-
 # 2.Java Grep App
 
 ## Introduction
@@ -138,7 +136,7 @@ writeToFile(matchedLines)
 
 ## Introduction
 
-A JDBC application
+The JDBC application uses the Java Database Connectivity API to connect and send SQL queries to a Postgresql database. The database models a sales business. The app can create a new customer, delete a customer, update information of a customer, find customer information, and get order information
 
 ## Design and Implementation
 
@@ -153,3 +151,7 @@ JDBC Driver
 <version>42.2.5</version>
 </dependency>
 ```
+
+##### Diagrams
+
+ [jdbc.drawio](jdbc.drawio) 
