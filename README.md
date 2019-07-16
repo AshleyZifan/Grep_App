@@ -1,35 +1,14 @@
-# 1.Java Grep App
+# Java_apps Summary
 
-## Introduction
+This repository contains three small java apps: 
 
-A simple grep app in Java. The app searches for a text pattern recursively in a given directory, and output matched lines to a file.
-
-## Usage
-
-```
-USAGE: JavaGrepImp regex rootPath outFile
-
-Similar to
-egrep -r {regex} {rootPath} > {outFile}
-```
+- Twitter CLI APP (with SpringBoot):
+- Java Grep App:
+- JDBC: 
 
 
 
-# 2.JDBC 
-
-## Introduction
-
-A JDBC application
-
-## Usage
-
-```
-JDBCExecutor
-```
-
-
-
-# 3.Twitter CLI App
+# 1.Twitter CLI App
 
 ## Introduction
 
@@ -37,7 +16,7 @@ A Twitter CLI App that can create, read, delete tweets.
 
 ## Usage
 
-Create a tweet on your timeline
+##### Create a tweet on your timeline
 
 ```
 USAGE: TwitterCLI post "tweet_text" "latitude:longitude"
@@ -49,7 +28,7 @@ UTF-8 encoded characters.
 latitude:longitude - Geo location.
 ```
 
-Read/Show a tweet by ID
+##### Read/Show a tweet by ID
 
 ```
 USAGE: TwitterCLI show tweet_id [field1,fields2]
@@ -73,7 +52,7 @@ list of top-level fields from the tweet object
 (similar to SELECT clause in SQL)
 ```
 
-Delete a tweet by tweet ID
+##### Delete a tweet by tweet ID
 
 ```
 USAGE: TwitterCLI delete tweet_ids
@@ -84,3 +63,72 @@ Arguments:
 tweet_ids - A comma-separated list of tweets.
 ```
 
+## Design and Implementation
+
+##### Pseudo code and workflow
+
+##### Libraries
+
+##### Diagrams
+
+## Enhancements and Issues
+
+
+
+# 2.Java Grep App
+
+## Introduction
+
+A simple grep app in Java. The app searches for a text pattern recursively in a given directory, and output matched lines to a file.
+
+## Usage
+
+```
+USAGE: JavaGrepImp regex rootPath outFile
+
+Similar to
+egrep -r {regex} {rootPath} > {outFile}
+```
+
+## Design and Implementation
+
+##### Pseudo code and workflow
+
+```
+matchedLines = []
+for file in listFiles(rootDir)
+    for line in readLines(file)
+        if containsPattern(line)
+          matchedLines.add(line)
+writeToFile(matchedLines)
+```
+
+##### Libraries
+
+
+
+##### Diagrams
+
+
+
+## Enhancements and Issues
+
+
+
+# 3.JDBC 
+
+## Introduction
+
+A JDBC application
+
+## Design and Implementation
+
+##### Pseudo code and workflow
+
+##### Libraries
+
+##### Diagrams
+
+## Enhancements and Issues
+
+## 

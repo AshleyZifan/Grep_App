@@ -3,6 +3,9 @@ import ca.jrvs.apps.twitter.dao.helper.HttpHelper;
 import ca.jrvs.apps.twitter.dto.Tweet;
 import org.apache.http.HttpResponse;
 import org.apache.http.util.EntityUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
 import java.io.*;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -11,7 +14,7 @@ import java.nio.charset.StandardCharsets;
 
 import static ca.jrvs.apps.twitter.example.JsonParser.toObjectFromJson;
 
-
+@Repository
 public class TwitterRestDao implements CrdRepository<Tweet, String>{
 
     //URI constants
@@ -28,6 +31,7 @@ public class TwitterRestDao implements CrdRepository<Tweet, String>{
     private static final int HTTP_OK = 200;
     private HttpHelper helper;
 
+    @Autowired
     public TwitterRestDao(HttpHelper helper){
         this.helper = helper;
     }
